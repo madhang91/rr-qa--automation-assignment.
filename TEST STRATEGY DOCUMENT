@@ -1,0 +1,103 @@
+Overall Approach
+
+1. Risk-based testing prioritizing critical user workflows
+2. Combination of positive and negative scenarios
+3. Data-driven approach for comprehensive coverage
+4. Focus on UI automation with API validation where applicable
+
+Scope:
+
+In-Scope: All filtering functionalities, pagination, UI responsiveness, browser API interactions
+Out-of-Scope: Performance testing, security testing, accessibility testing (can be added later)
+
+Distribution:
+
+E2E Tests: 70% (P0 user journeys)
+Integration Tests: 20% (Filter combinations)
+Edge Case Tests: 10% (Known issues, boundary cases)
+
+Test Design Techniques Applied
+
+A) Equivalence Partitioning:
+Valid Partitions: Movies, TV Shows, valid years (1900-2025), valid ratings (0-10)
+Invalid Partitions: Invalid years, out-of-range ratings, invalid URLs
+
+B) Boundary Value Analysis:
+Year boundaries: 1900, 1901, 2024, 2025, 2026
+Rating boundaries: 0, 0.1, 9.9, 10, 10.1
+Pagination: First page, middle pages, last valid page, beyond-last page
+
+C) Decision Table Testing:
+Filter combinations (Category + Type + Year + Rating + Genre)
+25 critical combinations identified
+
+D) State Transition Testing:
+Navigation flows between categories
+Filter application sequences
+
+E) Error Validation:
+Based on known issues (slug navigation, pagination limits)
+Common user mistakes (rapid filtering, browser back/forward)
+
+Test Categories Generated: 
+FUNCTIONAL TESTS (40 test cases)
+
+A. Filtering Tests (25 cases)
+1. Category filtering (Popular, Trending, Newest, Top Rated)
+2. Type filtering (Movies vs TV Shows)
+3. Year filtering (boundary values + valid ranges)
+4. Rating filtering (min/max values)
+5. Genre filtering (single + multiple selections)
+6. Combined filters (category + type + year)
+
+B. Pagination Tests (8 cases)
+7. First page navigation
+8. Next/Previous page functionality
+9. Direct page number navigation
+10. Last valid page behavior
+11. Beyond-last page handling (negative)
+
+C. Search/Title Tests (4 cases)
+12. Title search with valid input
+13. Title search with no results
+14. Case-insensitive search
+15. Special character handling
+
+D. UI Behavior Tests (3 cases)
+16. Responsive layout verification
+17. Loading states
+18. Error message display
+
+NEGATIVE TESTS (15 test cases)
+
+Slug-based URL access (known issue)
+Last few pagination pages (known issue)
+Invalid filter combinations
+Concurrent filter applications
+Browser back/forward with filters
+Network interruption scenarios
+
+API/BROWSER TESTS (10 cases)
+
+Network request validation
+Response status codes
+Payload structure verification
+
+
+Framework Selection: Playwright
+
+Rationale:
+Cross-browser support (Chromium, Firefox, WebKit)
+Native API interception for request/response validation
+Parallel execution out-of-the-box
+Scalable reporting with screenshots and traces
+Auto-wait mechanisms reduce flakiness
+Strong TypeScript support for maintainability
+
+Coding Patterns & Process
+
+Page Object Model (POM)
+DRY (Don't Repeat Yourself)
+SOLID principles for class design
+Strong typing with TypeScript interfaces
+
