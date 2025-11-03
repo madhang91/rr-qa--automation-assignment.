@@ -1,0 +1,87 @@
+Test Case Specification
+Format: Each test case follows this structure:
+
+TC-ID: Unique identifier
+Test Objective: What we're validating
+Preconditions: Setup requirements
+Test Steps: Detailed actions
+Expected Result: Success criteria
+Test Data: Input values
+Priority: High/Medium/Low
+Test Type: Functional/Negative/API
+
+SAMPLE TEST CASE (Detailed)
+
+TC-001: Verify Popular Category Filter
+Objective: Validate that clicking "Popular" category displays popular movies/shows
+Priority: High
+Type: Functional
+Preconditions: Application is accessible
+
+Test Steps:
+Navigate to https://tmdb-discover.surge.sh/
+Verify default category is loaded
+Click on "Popular" category button
+Wait for content to load
+Verify URL updates appropriately
+Capture network request to TMDB API
+Validate response contains "popular" endpoint
+
+Expected Result:
+Popular category is highlighted
+Grid displays popular titles
+Network request to /movie/popular or /tv/popular successful
+Response status: 200
+At least 1 result displayed
+Test Data: N/A
+
+==============================================================================================================
+
+TC-035: Verify Combined Filters - Category + Type + Year
+Objective: Test multiple simultaneous filters
+
+Priority: High
+Type: Integration
+
+Test Steps:
+Select Category: "Top Rated"
+Select Type: "Movies"
+Apply Year filter: 2020
+Apply Rating filter: ≥ 8
+Verify all filters remain active
+Validate API request contains all filter parameters
+Verify results match ALL criteria
+
+Expected Result:
+
+All filter selections persist
+Single API request with combined parameters
+Results satisfy all filter conditions
+Filter badges/indicators show active filters
+Test Data:
+Category: Top Rated
+Type: Movies
+Year: 2020
+Rating: 8+
+
+=========================================================================================================
+
+TC-041: NEGATIVE - Verify Direct Slug Navigation
+Objective: Validate known issue with slug-based URLs
+Priority: High
+Type: Negative
+
+Test Steps:
+Attempt to access https://tmdb-discover.surge.sh/popular
+Observe behavior (page load, errors, redirects)
+Check browser console for errors
+Verify if content loads correctly
+Attempt refresh on the slug URL
+
+Expected Result (Bug):
+Direct slug access may fail
+404 or blank page displayed
+Console shows routing errors
+This is a known defect - document actual behavior
+
+Test Data: /popular, /trending, /newest, /top-rated
