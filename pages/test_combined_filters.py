@@ -5,7 +5,7 @@ import pytest
 import allure
 from playwright.sync_api import Page
 from pages.home_page import HomePage
-from utils.api_interceptor import APIInterceptor
+from .api_interceptor import APIInterceptor
 
 
 @allure.epic("TMDB Discover")
