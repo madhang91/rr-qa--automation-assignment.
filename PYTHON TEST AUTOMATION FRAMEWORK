@@ -1,0 +1,42 @@
+Framework Selection: Pytest + Playwright (Python)
+
+Why Playwright for Python:
+Modern, fast, and reliable
+Better API interception than Selenium
+Auto-waiting mechanisms
+Native async support
+Multiple browser support
+Better debugging tools
+
+Project Structure:
+
+tmdb-test-automation/
+├── tests/
+│   ├── __init__.py
+│   ├──
+│   ├── functional/
+│   │   ├── __init__.py
+│   ├── negative/
+│   │   ├── __init__.py
+│   └── api/
+│       ├── __init__.py
+├── pages/
+│   ├── __init__.py
+│   ├── base_page.py / home_page.py
+│   └── components/
+│       ├── __init__.py
+│       ├── filter_component.py
+│       └── pagination_component.py
+├── utils/
+│   ├── __init__.py
+├── config/
+│   ├── __init__.py
+├── reports/
+│   ├── html/
+│   ├── screenshots/
+│   └── logs/
+├── requirements.txt
+├── pytest.ini
+├── .github/
+│   └── workflows/
+└── README.md
